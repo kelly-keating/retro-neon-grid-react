@@ -1,6 +1,6 @@
 export function horizontalLines (context, props, dimensions) {
   let a = 0
-  let b = 0.4
+  let b = props.gap
 
   horzLine(context, props, dimensions, 0)
 
@@ -13,7 +13,7 @@ export function horizontalLines (context, props, dimensions) {
 }
 
 export function verticalLines (context, props, dimensions) {
-    const numOfLinesAcross = Math.floor(50 / props.gap)
+    const numOfLinesAcross = Math.floor(50 / props.spacing)
     for (let i = -1 * numOfLinesAcross; i < numOfLinesAcross + 1; i++) {
       const angle = i * props.angle
       if (angle < 90 && angle > -90) {
@@ -22,20 +22,20 @@ export function verticalLines (context, props, dimensions) {
     }
 }
 
-export function horzLine (context, { top, lineWidth, colour }, { width, height }, down) {
+export function horzLine (context, { top, lineWidth, colour, glow }, { width, height }, down) {
   const y = (down + top) / 100 * height
 
   context.beginPath()
   context.moveTo(0, y)
   context.lineTo(width, y)
 
-  draw(context, lineWidth, colour)
+  draw(context, lineWidth, colour, glow)
 }
 
-export function vertLine (context, { lineWidth, colour, top, gap }, { height, width }, across, angle) {
+export function vertLine (context, { lineWidth, colour, top, spacing, glow }, { height, width }, across, angle) {
   context.beginPath()
 
-  const topX = ((50 + (across * gap)) / 100 * width) - (lineWidth / 2)
+  const topX = ((50 + (across * spacing)) / 100 * width) - (lineWidth / 2)
   const topY = top / 100 * height
   context.moveTo(topX, topY)
 
@@ -43,13 +43,15 @@ export function vertLine (context, { lineWidth, colour, top, gap }, { height, wi
   const lowerY = height
   context.lineTo(lowerX, lowerY)
 
-  draw(context, lineWidth, colour)
+  draw(context, lineWidth, colour, glow)
 }
 
-export function draw (context, lineWidth, colour) {
+export function draw (context, lineWidth, colour, glow) {
   context.lineWidth = lineWidth
   context.strokeStyle = colour
-  context.shadowBlur = 5
-  context.shadowColor = colour
+  if (glow) {
+    context.shadowBlur = 5
+    context.shadowColor = colour
+  }
   context.stroke()
 }

@@ -2,7 +2,17 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { horizontalLines, verticalLines } from './utils'
 
-function Grid(props) {
+function Grid (props) {
+  const {
+    lineWidth = 2,
+    top = 30,
+    glow = true,
+    colour = '#aa00ff',
+    angle = 20,
+    spacing = 2,
+    gap = 0.3,
+  } = props
+
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHeight] = useState(window.innerHeight)
   const canvasRef = useRef(null)
@@ -17,8 +27,18 @@ function Grid(props) {
     const context = canvas.getContext('2d')
     context.clearRect(0, 0, canvas.width, canvas.height)
 
-    verticalLines(context, props, { width, height })
-    horizontalLines(context, props, { width, height })
+    const allDeets = {
+      lineWidth,
+      top,
+      glow,
+      colour,
+      angle,
+      spacing,
+      gap,
+    }
+
+    verticalLines(context, allDeets, { width, height })
+    horizontalLines(context, allDeets, { width, height })
   }, [width, height])
 
   const updateWidthAndHeight = () => {
