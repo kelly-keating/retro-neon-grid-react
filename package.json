@@ -1,6 +1,6 @@
 {
   "name": "retro-neon-grid-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dope retro neon grid - React Component",
   "main": "build/index.js",
   "author": "kelly-keating",
