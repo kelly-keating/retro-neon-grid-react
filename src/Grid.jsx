@@ -11,6 +11,8 @@ function Grid (props) {
     angle = 20,
     spacing = 2,
     gap = 0.3,
+    position = 'fixed',
+    zIndex = -9999
   } = props
 
   const [width, setWidth] = useState(window.innerWidth)
@@ -46,11 +48,11 @@ function Grid (props) {
     setHeight(window.innerHeight)
   }
 
-  // TODO: make customisable
   const style = {
-    position: 'fixed',
-    top: '0px',
-    left: '0px',
+    position,
+    zIndex,
+    top: '0px', // TODO: make customisable
+    left: '0px',  // TODO: make customisable
   }
 
   return (
