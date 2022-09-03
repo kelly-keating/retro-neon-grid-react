@@ -51,6 +51,7 @@ The following shows the props you can provide the component to customise the gri
 | angle | Angle at which vertical lines angle away from the center (getting progressively larger). Use 0 and all vertical lines will be completely vertical. Negative value will angle lines closer towards the bottom of the page. | 20 |
 | spacing | Distance between top point of neighbouring vertical lines. | 2 |
 | gap | Starting gap at top of horizontal lines. This is kept small at the top and gets progressively larger down the grid. | 0.3 |
+| linearY | Apply same gap between horizontal lines rather than progressively increasing | false |
 | position | CSS property applied to the canvas. | "fixed" |
 | zIndex |  CSS property applied to the canvas. | -9999 |
 

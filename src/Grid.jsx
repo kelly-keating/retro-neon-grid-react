@@ -12,7 +12,8 @@ function Grid (props) {
     spacing = 2,
     gap = 0.3,
     position = 'fixed',
-    zIndex = -9999
+    zIndex = -9999,
+    linearY = false
   } = props
 
   const [width, setWidth] = useState(window.innerWidth)
@@ -40,7 +41,7 @@ function Grid (props) {
     }
 
     verticalLines(context, allDeets, { width, height })
-    horizontalLines(context, allDeets, { width, height })
+    horizontalLines(context, allDeets, { width, height }, linearY)
   }, [width, height])
 
   const updateWidthAndHeight = () => {

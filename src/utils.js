@@ -1,4 +1,4 @@
-export function horizontalLines (context, props, dimensions) {
+export function horizontalLines (context, props, dimensions, linear) {
   let a = 0
   let b = props.gap
 
@@ -6,9 +6,13 @@ export function horizontalLines (context, props, dimensions) {
 
   while ( b < 100 - props.top) {
     horzLine(context, props, dimensions, b)
-    const sum = a + b
-    a = b
-    b = sum
+    if(linear) {
+      b = b + props.gap
+    } else {
+      const sum = a + b
+      a = b
+      b = sum
+    }
   }
 }
 
