@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { horizontalLines, verticalLines } from './utils'
 
-function Grid (props) {
+function Grid(props) {
   const {
     lineWidth = 2,
     top = 30,
@@ -13,7 +13,7 @@ function Grid (props) {
     gap = 0.3,
     position = 'fixed',
     zIndex = -9999,
-    linearY = false
+    linearY = false,
   } = props
 
   const [width, setWidth] = useState(window.innerWidth)
@@ -53,7 +53,7 @@ function Grid (props) {
     position,
     zIndex,
     top: '0px', // TODO: make customisable
-    left: '0px',  // TODO: make customisable
+    left: '0px', // TODO: make customisable
   }
 
   return (
